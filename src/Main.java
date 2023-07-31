@@ -40,20 +40,16 @@ public class Main {
         }
     }
 
-    private static String does(String[] input) throws Exception {
-        if (input.length > 3) {
+    public static String calc(String input) throws Exception {
+        String[] expression = input.split(" ");
+        if (expression.length > 3) {
             throw new Exception("throws Exception //т.к. формат математической операции не удовлетворяет заданию " +
                     "- два операнда и один оператор (+, -, /, *)");
         }
-        if (input.length < 3 || !"+-*/".contains(input[1])) {
+        if (expression.length < 3 || !"+-*/".contains(expression[1])) {
             throw new Exception("throws Exception //т.к. строка не является математической операцией");
         }
-        return symbol(input[0].toUpperCase(), input[2].toUpperCase(), input[1]);
-    }
-
-    public static String calc(String input) throws Exception {
-        String[] expression = input.split(" ");
-        return does(expression);
+        return symbol(expression[0].toUpperCase(), expression[2].toUpperCase(), expression[1]);
     }
 
     public static void main(String[] args) throws Exception {
